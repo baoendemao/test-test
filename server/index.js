@@ -2,6 +2,12 @@ const Koa = require('koa');
 const app = new Koa();
 const views = require('koa-views');
 const { resolve } = require('path');
+const { connect } = require('./database/init');
+
+// 数据库连接
+(async () => {
+    await connect();
+})();
 
 // views中间件的集成, 将模板挂在到了context上下文
 app.use(views(resolve(__dirname, 'views'), {
