@@ -2,12 +2,25 @@ const Koa = require('koa');
 const app = new Koa();
 const views = require('koa-views');
 const { resolve } = require('path');
-const { connect } = require('./database/init');
+const mongoose = require('mongoose');
+const { connect, initSchemas } = require('./database/init');
+const router = require('./routes');
 
 // 数据库连接
 (async () => {
-    await connect();
+  await connect();
+  initSchemas();
+  /*
+  let Article = mongoose.model('Article');
+  let articles = await Article.find({})
+  console.log('articles: ====')
+  console.log(articles)
+  */
 })();
+
+app
+  .use(router.routes())
+  .use(router.allowedMethods());
 
 // views中间件的集成, 将模板挂在到了context上下文
 app.use(views(resolve(__dirname, 'views'), {
