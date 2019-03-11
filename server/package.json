@@ -1,10 +1,10 @@
 {
   "name": "test-test",
   "version": "1.0.0",
-  "description": "",
+  "description": "server side",
   "main": "index.js",
   "scripts": {
-    "dev": "node server/index.js"
+    "dev": "node ./index.js"
   },
   "repository": {
     "type": "git",

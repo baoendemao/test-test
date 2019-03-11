@@ -1,5 +1,9 @@
-### Pet Smile
+## Pet Smile
 
+### Client端 ( 浏览器 )
+
+
+### Server端 ( Node )
 #### 环境准备
 * 安装MongoDB
 ```
